@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h2 style="margin: 5vh;">All {{ type }} :</h2>
+
+<div class="container" style="height: 300px; overflow:auto" >
+{% for item in list %}
+<div class="list-group" style="margin: 2vh;">
+    {% if type != 'DM' %}
+    <a href="/view/{{ type }}/{{ item.id }}" class="list-group-item list-group-item-action">
+        {{ item.name }}
+    </a>
+    {% else %}
+    <a href="#" class="list-group-item list-group-item-action">
+        {{ item.name }}
+    </a>
+    {% endif %}
+</div>
+{% endfor %}
+</div>
+{% endblock %}

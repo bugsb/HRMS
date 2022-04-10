@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div>
+
+</div>
+
+
+<div class="container-fluid "  >
+  <div class=" row justify-content-between mt-3">
+    <div class="col-lg-6 ">
+      <div class="p-3 border bg-light">Total Members: {{ total_member }}</div>
+    </div>
+    <div class="col-lg-6 ">
+      <div class="p-3 border bg-light">Total Commission of Team : {{ commission }}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 my-3">
+      <div class="card">
+        <div class="card-header">
+          Members in team: {{ Parent.name }}
+        </div>
+    
+        <div >
+    
+          <ul class="list-group list-group-flush" style="height: 200px;overflow:auto;">
+            {% for item in Child %}
+            {% if type != 'DM' %}
+            <a href="/view/{{ type }}/{{ item.id }}"> <li class="list-group-item">{{ item.name }}</li></a>
+              {% else %}
+              <a href="#"> <li class="list-group-item">{{ item.name }}</li></a>
+                {% endif %}
+                {% endfor %}
+          </ul>
+    
+        </div>
+    
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 d-flex justify-content-center">
+      <div class="row">
+        <div class="col-12 p-0">
+          <a class="btn btn-success mx-2 mb-5 w-100" href="/form/{{ type }}/{{Parent.id}}" role="button">Add {{type}}</a>
+        </div>
+      </div>
+     
+    </div>
+   
+  </div>
+  
+  <div>
+    <a class="btn btn-danger" href="/rm/{{ type }}/{{Parent.id}}" role="button">-</button></a>
+    <button type="button" class="btn btn-light">Total Sale of Team : {{ total_sales }}</button>
+    <a class="btn btn-success" href="/add/{{ type }}/{{Parent.id}}" role="button">+</button></a>
+  </div>
+</div>
+
+
+{% endblock %}
